@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace React_Project1.Models
 {
@@ -9,6 +10,10 @@ namespace React_Project1.Models
         public int ProductId { get; set; }
         public int CustomerId { get; set; }
         public int StoreId { get; set; }
+
+        [Required(ErrorMessage = "Enter the Sale date.")]
+        [DataType(DataType.Date)]
+
         public DateTime DateSold { get; set; }
 
         public virtual Customer Customer { get; set; }

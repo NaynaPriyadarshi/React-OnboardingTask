@@ -14,12 +14,10 @@ export class DeleteCustomer extends Component {
 
     state = { open: false }
 
-    deleteShow = (deleteOn) => () => {
-        this.setState({ deleteOn, open: true })
-    }
+    modalShow = () => { this.setState({ open: true }) }
+
 
     close = () => this.setState({ open: false })
-
     componentDidMount() {
 
         axios.get("https://localhost:44394/api/Customers").then(response => {
@@ -51,34 +49,23 @@ export class DeleteCustomer extends Component {
         const { open } = this.state
         return (
             <div>
-                { /* <Button onClick={this.modalShow} color='red'> <i className="trash icon"></i>Delete </Button> */}
-
-                <Button onClick={this.onDelete.bind(this)} className="btn red "> <i className="trash icon"></i>Delete </Button>
+                <Button onClick={this.modalShow} className="btn red "> <i className="trash icon"></i>Delete </Button>
                 <Modal
                     open={open}
                     onClose={this.close}>
                     <Modal.Header>Delete Customer</Modal.Header>
                     <Modal.Content>
-                        <p>Are you sure Do you want to delete this Customer?</p>
-                        <div className="ui form">
-                            <div className="field">
-                                <label>Customer Name</label>
-                                <input type="text" name="customername" ref="customername" placeholder="Customer Name" />
-                            </div>
-                            <div className="field">
-                                <label>Address</label>
-                                <input type="text" name="address" ref="address" placeholder="address" />
-                            </div>
-                        </div>
+                        <p>Are you sure ,Do you want to delete this Customer?</p>
+                        
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button onClick={this.close} negative> Cancel </Button>
+                        <Button onClick={this.close} negative>Cancel </Button>
                         <Button
                             onClick={(id) => this.onDelete(this.props.delid)}
                             positive
                             labelPosition='right'
                             icon='checkmark'
-                            content='Save' />
+                            content='Delete' />
                     </Modal.Actions>
                 </Modal>
             </div>

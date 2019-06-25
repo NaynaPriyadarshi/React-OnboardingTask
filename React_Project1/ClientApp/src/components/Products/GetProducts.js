@@ -38,14 +38,14 @@ export class GetProducts extends Component {
 
         //const { open, deleteOn } = this.state
         return (
-            <div>
+            <div style={{ width: '80%', marginLeft: '200px' }}>
                 <CreateProduct />
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
-                            <Table.HeaderCell>Name</Table.HeaderCell>
-                            <Table.HeaderCell>Price</Table.HeaderCell>
+                            {/* <Table.HeaderCell>Id</Table.HeaderCell> */}
+                            <Table.HeaderCell>Name--</Table.HeaderCell>
+                            <Table.HeaderCell>Price--</Table.HeaderCell>
                             <Table.HeaderCell>Actions</Table.HeaderCell>
                             <Table.HeaderCell>Actions</Table.HeaderCell>
                         </Table.Row>
@@ -56,7 +56,7 @@ export class GetProducts extends Component {
                             return (
                                 <Table.Row key={p.id}>
 
-                                    <Table.Cell>{p.id} </Table.Cell>
+                                    {/* <Table.Cell>{p.id} </Table.Cell> */}
                                     <Table.Cell>{p.name}</Table.Cell>
                                     <Table.Cell>{p.price}</Table.Cell>
                                     <Table.Cell>
@@ -72,6 +72,7 @@ export class GetProducts extends Component {
                             );
                         })}
                     </Table.Body>
+
 
 
                 </Table>

@@ -9,6 +9,7 @@ import { EditSale } from './EditSale';
 
 
 
+
 export class GetSales extends Component {
     constructor(props) {
         super(props);
@@ -75,20 +76,20 @@ export class GetSales extends Component {
 
     render() {
 
-        //const { open, deleteOn } = this.state
+       // const { open, deleteOn } = this.state
         return (
-            <div>
+            <div style={{ width: '80%', marginLeft:'200px' }}>
 
 
                 <CreateSale />
-                <Table celled>
+                <Table celled >
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
-                            <Table.HeaderCell>ProductName</Table.HeaderCell>
-                            <Table.HeaderCell>CustomerName</Table.HeaderCell>
-                            <Table.HeaderCell>StoreName</Table.HeaderCell>
-                            <Table.HeaderCell>DateSold</Table.HeaderCell>
+                            {/* <Table.HeaderCell>Id</Table.HeaderCell>*/}
+                            <Table.HeaderCell>CustomerName--</Table.HeaderCell>
+                            <Table.HeaderCell>ProductName--</Table.HeaderCell>
+                            <Table.HeaderCell>StoreName--</Table.HeaderCell>
+                            <Table.HeaderCell>DateSold--</Table.HeaderCell>
                             <Table.HeaderCell>Actions</Table.HeaderCell>
                             <Table.HeaderCell>Actions</Table.HeaderCell>
                         </Table.Row>
@@ -99,25 +100,24 @@ export class GetSales extends Component {
                             return (
                                 <Table.Row key={sale.id}>
 
-                                    <Table.Cell>{sale.id}</Table.Cell>
+                                    {/* <Table.Cell>{sale.id}</Table.Cell>*/}
+
+
+                                   
+                                    {this.state.CustomerData.map((c) => {
+                                        if (sale.customerId === c.id) {
+                                            return (<Table.Cell key={c.id}>{c.name}</Table.Cell>)
+                                        }
+                                    })}
 
 
                                     {this.state.ProductData.map((p) => {
                                         if (sale.productId === p.id) {
                                             return (<Table.Cell key={p.id}>{p.name}</Table.Cell>)
                                         }
-                                    })}
+                                    })
+                                    }
 
-
-
-
-
-
-                                    {this.state.CustomerData.map((c) => {
-                                        if (sale.customerId === c.id) {
-                                            return (<Table.Cell key={c.id}>{c.name}</Table.Cell>)
-                                        }
-                                    })}
 
 
 
@@ -145,7 +145,8 @@ export class GetSales extends Component {
 
                                     <Table.Cell>
 
-                                        <EditSale editid />
+                                        <EditSale editid={sale.id} />
+
                                     </Table.Cell>
 
 

@@ -38,7 +38,7 @@ export class CreateProduct extends Component {
                 <Modal
                     open={open}
                     onClose={this.close}>
-                    <Modal.Header>Add Product</Modal.Header>
+                    <Modal.Header>Create Product</Modal.Header>
                     <Modal.Content>
                         <p>Are you sure,Do You want to Add Product?</p>
                         <div className="ui form">
@@ -59,7 +59,7 @@ export class CreateProduct extends Component {
                             positive
                             labelPosition='right'
                             icon='checkmark'
-                            content='Save' />
+                            content='Create' />
                     </Modal.Actions>
                 </Modal>
             </div>

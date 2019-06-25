@@ -14,11 +14,13 @@ export class DeleteStore extends Component {
 
     state = { open: false }
 
-    deleteShow = (deleteOn) => () => {
-        this.setState({ deleteOn, open: true })
-    }
+
+    modalShow = () => { this.setState({ open: true }) }
+
 
     close = () => this.setState({ open: false })
+
+
 
     componentDidMount() {
 
@@ -49,32 +51,23 @@ export class DeleteStore extends Component {
         const { open } = this.state
         return (
             <div>
-                <Button onClick={this.onDelete.bind(this)} className="btn red "> <i className="trash icon"></i>Delete </Button>
+                <Button onClick={this.modalShow} className="btn red "> <i className="trash icon"></i>Delete </Button>
                 <Modal
                     open={open}
                     onClose={this.close}>
                     <Modal.Header>Delete Store</Modal.Header>
                     <Modal.Content>
-                        <p>Are you sure do you want to delete this Store?</p>
-                        <div className="ui form">
-                            <div className="field">
-                                <label>Store Name</label>
-                                <input type="text" name="storename" ref="storename" placeholder="store Name" />
-                            </div>
-                            <div className="field">
-                                <label>address</label>
-                                <input type="text" name="address" ref="address" placeholder="address" />
-                            </div>
-                        </div>
+                        <p>Are you sure, do you want to delete this Store?</p>
+                       
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button onClick={this.close} negative> No </Button>
+                        <Button onClick={this.close} negative> Cancel </Button>
                         <Button
                             onClick={(id) => this.onDelete(this.props.delid)}
                             positive
                             labelPosition='right'
                             icon='checkmark'
-                            content='Yes' />
+                            content='Delete' />
                     </Modal.Actions>
                 </Modal>
             </div>

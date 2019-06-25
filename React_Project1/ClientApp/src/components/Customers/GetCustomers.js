@@ -37,16 +37,17 @@ export class GetCustomers extends Component {
 
     render() {
 
-       // const { open, deleteOn } = this.state
+        //const { open, deleteOn } = this.state
         return (
-            <div>
+            <div style={{ width: '80%', marginLeft: '200px' }}>
+           
                 <CreateCustomer />
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
-                            <Table.HeaderCell>Name</Table.HeaderCell>
-                            <Table.HeaderCell>Address</Table.HeaderCell>
+                            {/*  <Table.HeaderCell>Id</Table.HeaderCell> */}
+                            <Table.HeaderCell>Name--</Table.HeaderCell>
+                            <Table.HeaderCell>Address--</Table.HeaderCell>
                             <Table.HeaderCell>Actions</Table.HeaderCell>
                             <Table.HeaderCell>Actions</Table.HeaderCell>
                         </Table.Row>
@@ -57,7 +58,7 @@ export class GetCustomers extends Component {
                             return (
                                 <Table.Row key={c.id}>
 
-                                    <Table.Cell>{c.id} </Table.Cell>
+                                    {/* <Table.Cell>{c.id} </Table.Cell> */}
                                     <Table.Cell>{c.name}</Table.Cell>
                                     <Table.Cell>{c.address}</Table.Cell>
                                     

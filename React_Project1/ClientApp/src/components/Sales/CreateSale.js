@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Button, Modal, Form } from 'semantic-ui-react';
-import { DateInput } from 'semantic-ui-calendar-react';
+//import { DateInput } from 'semantic-ui-calendar-react';
 import axios from 'axios';
 
 export class CreateSale extends Component {
@@ -17,9 +17,6 @@ export class CreateSale extends Component {
             storeId: '',
             dateSold: '',
            
-
-
-
             
             SaleData: [],
             CustomerData: [],
@@ -37,11 +34,11 @@ export class CreateSale extends Component {
     modalShow = () => { this.setState({ open: true }) }
     close = () => this.setState({ open: false })
 
-    handleChange = (event, { name, value }) => {
+    /* handleChange = (event, { name, value }) => {
         if (this.state.hasOwnProperty(name)) {
             this.setState({ [name]: value });
         }
-    }
+    } */
 
    
     addSale(newSale) {
@@ -61,8 +58,9 @@ export class CreateSale extends Component {
 
 
     onSubmit(e) {
+        debugger;
         const newSale = {
-            'dateSold': this.state.date,
+            'dateSold': this.refs.datesold.value,
             'productId': this.refs.productname.value,
             'customerId': this.refs.customername.value,
             'storeId': this.refs.storename.value,
@@ -73,10 +71,7 @@ export class CreateSale extends Component {
     };
 
 
-    onChange(e) {
-        console.log(e.target.value)
-        this.setState({ [e.target.name]: e.target.value });
-    }
+   
     
 
     componentDidMount() {
@@ -143,15 +138,22 @@ render() {
 
 
                             <Form.Field>
-                                <label>Date Sold</label>
-                                <DateInput
+                                    <label>Date Sold</label>
+
+                                    <input type="text" name="datesold" ref="datesold" placeholder="DateSold" />
+
+
+                                    {  /*  <DateInput
                                         name="date"
                                         //ref="dateSold"
                                     placeholder="Date"
                                      value={this.state.date}
                                     iconPosition="left"
-                                    onChange={this.handleChange}
-                                />
+                                    onChange={this.handleChange}}
+
+
+
+                                />*/}
                             </Form.Field>
 
 

@@ -14,9 +14,9 @@ export class DeleteProduct extends Component {
 
     state = { open: false }
 
-    deleteShow = (deleteOn) => () => {
-        this.setState({ deleteOn, open: true })
-    }
+
+    modalShow = () => { this.setState({ open: true }) }
+
 
     close = () => this.setState({ open: false })
 
@@ -51,25 +51,14 @@ export class DeleteProduct extends Component {
         const { open } = this.state
         return (
             <div>
-                { /* <Button onClick={this.modalShow} color='red'> <i className="trash icon"></i>Delete </Button> */}
-
-                <Button onClick={this.onDelete.bind(this)} className="btn red "> <i className="trash icon"></i>Delete </Button>
+                <Button onClick={this.modalShow} className="btn red "> <i className="trash icon"></i>Delete </Button>
                 <Modal
                     open={open}
                     onClose={this.close}>
                     <Modal.Header>Delete Product</Modal.Header>
                     <Modal.Content>
-                        <p>Are you sure Do you want to delete this Product?</p>
-                        <div className="ui form">
-                            <div className="field">
-                                <label>Product Name</label>
-                                <input type="text" name="productname" ref="productname" placeholder="Product Name" />
-                            </div>
-                            <div className="field">
-                                <label>Price</label>
-                                <input type="text" name="price" ref="price" placeholder="Price" />
-                            </div>
-                        </div>
+                        <p>Are you sure, Do you want to delete this Product?</p>
+                        
                     </Modal.Content>
                     <Modal.Actions>
                         <Button onClick={this.close} negative> Cancel </Button>
@@ -78,7 +67,7 @@ export class DeleteProduct extends Component {
                             positive
                             labelPosition='right'
                             icon='checkmark'
-                            content='Save' />
+                            content='Delete' />
                     </Modal.Actions>
                 </Modal>
             </div>

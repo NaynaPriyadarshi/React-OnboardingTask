@@ -39,14 +39,14 @@ export class GetStores extends Component {
 
         //const { open, deleteOn } = this.state
         return (
-            <div>
+            <div style={{ width: '80%', marginLeft: '200px' }}>
                 <AddStore />
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
-                            <Table.HeaderCell>Name</Table.HeaderCell>
-                            <Table.HeaderCell>Address</Table.HeaderCell>
+                            {/* <Table.HeaderCell>Id</Table.HeaderCell> */}
+                            <Table.HeaderCell>Name--</Table.HeaderCell>
+                            <Table.HeaderCell>Address--</Table.HeaderCell>
                             <Table.HeaderCell>Actions</Table.HeaderCell>
                             <Table.HeaderCell>Actions</Table.HeaderCell>
                         </Table.Row>
@@ -57,7 +57,7 @@ export class GetStores extends Component {
                             return (
                                 <Table.Row key={s.id}>
 
-                                    <Table.Cell>{s.id} </Table.Cell>
+                                    {/* <Table.Cell>{s.id} </Table.Cell> */}
                                     <Table.Cell>{s.name}</Table.Cell>
                                     <Table.Cell>{s.address}</Table.Cell>
 

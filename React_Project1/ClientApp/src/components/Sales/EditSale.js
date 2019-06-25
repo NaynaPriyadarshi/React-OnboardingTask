@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { Button, Modal, Form } from 'semantic-ui-react';
+import { Button, Modal,Form} from 'semantic-ui-react';
 import axios from 'axios';
 
 export class EditSale extends Component {
@@ -20,54 +20,47 @@ export class EditSale extends Component {
             dateSold: '',
 
 
-           
+
             SaleData: [],
-            CustomerData: [],
+           CustomerData: [],
 
-            ProductData: [],
-            
-            StoreData: [],
-            date: ''
+           ProductData: [],
 
-            
+           StoreData: [],
+          date: ''
+
+
         }
-        
+
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-   
+
 
     componentDidMount() {
 
-        this.editSale();
-
-     }
-
-    componentDidUpdate() {
-
-        this.editSale();
-
+        this.getSale();
+        this.getSales();
+        
     }
 
+            
+  getSale() {
+
+      axios.get("https://localhost:44394/api/Sales").then(response => {
+
+          this.setState({
+              SaleData: response.data
+          })
+      });
 
 
-
-    editSale() {
-        axios.get("https://localhost:44394/api/Sales").then(response => {
-
-            this.setState({
-                SaleData: response.data
-            });
-
-            });
-
-
-     
         axios.get("https://localhost:44394/api/Customers").then(response => {
 
             this.setState({
+
                 CustomerData: response.data
-               
+
             });
         });
 
@@ -77,13 +70,13 @@ export class EditSale extends Component {
 
             this.setState({
                 ProductData: response.data
-                
+
             });
         });
 
 
         axios.get("https://localhost:44394/api/Stores").then(response => {
-           
+
             this.setState({
                 StoreData: response.data
             });
@@ -91,59 +84,93 @@ export class EditSale extends Component {
 
     }
 
-    handleEdit(newSale) {
+   
+
+   getSales() {
+        axios.get(`https://localhost:44394/api/Sales/` + this.props.editid).then(response => {
+
+            this.setState({
+                id: response.data.id,
+                dateSold: response.data.dateSold,
+                customerId: response.data.customerId,
+
+                productId: response.data.productId,
+
+               
+            }, () => {
+                // console.log("hi");
+
+            });
+
+
+
+        }).catch(err => console.log(err));
+
+    }
+
+
+    editSale(newSale) {
+
         let id = this.state.id;
         let sale = {
             id: this.state.id,
-            productId:newSale.productId,
+                   
+           dateSold: newSale.dateSold,
             customerId: newSale.customerId,
-            storeId: newSale.storeId,
-            dateSold: newSale.dateSold
+
+            productId: newSale.productId,
+
+            storeId: newSale.storeId
+
+
         }
         console.log(sale);
         axios.request({
             method: 'put',
-
-            url: `https://localhost:44394/api/Sales/` + id,
-
+            url: `https://localhost:44394/api/Sales/ ` + id,
             data: sale
+
         }).then(response => {
 
             this.props.history.push('/');
             this.setState({
-                
-                productId: newSale.productId,
+                dateSold: newSale.dateSold,
                 customerId: newSale.customerId,
-                storeId: newSale.storeId,
-                dateSold: newSale.dateSold
+
+                productId: newSale.productId,
+
+                storeId: newSale.storeId
+
             }, () => {
                 console.log("hi", this.state);
+
             });
+
         }).catch(err => console.log(err));
+
         this.close();
         window.location.reload();
     }
 
     onSubmit(e) {
+        debugger;
         const newSale = {
-            //id: this.props.editId,
-            //productId: this.props.productId,
-            //customerId: this.props.customerId,
-            //storeId: this.props.storeId,
-            //dateSold: this.props.dateSold
-           
-            productId: this.refs.productId.value,
+
+            dateSold: this.refs.dateSold.value,
             customerId: this.refs.customerId.value,
+
+            productId: this.refs.productId.value,
+            
             storeId: this.refs.storeId.value,
-            dateSold: this.refs.dateSold.value
+           
         }
-        console.log("EditSale:", newSale);
-        this.handleEdit(newSale);
-        e.preventDefault();
+        
+        this.editSale(newSale);
+       
     }
 
     handleInputChange(e) {
- 
+
         const target = e.target;
         const value = target.value;
         const name = target.name;
@@ -151,16 +178,6 @@ export class EditSale extends Component {
             [name]: value
         });
     }
-  
-    onChange(e) {
-        console.log(e.target.value)
-        this.setState({ [e.target.name]: e.target.value });
-    }
-
-   
-
-   
-       
 
     render() {
 
@@ -169,8 +186,8 @@ export class EditSale extends Component {
         return (
             <React.Fragment>
                 <div>
-                    
-                        <Button onClick={this.modalShow} color='yellow' > <i className="edit outline icon"></i>Edit</Button>
+
+                    <Button onClick={this.modalShow} color='yellow' > <i className="edit outline icon"></i>Edit</Button>
                     <Modal
                         open={open}
                         onClose={this.close}>
@@ -183,56 +200,53 @@ export class EditSale extends Component {
                                 <Form.Field>
                                     <label>Date Sold</label>
 
-                                     
-                                    <input type="text" name="dateSold" ref="dateSold" defaultValue={this.props.DateSold} placeholder='YYYY/MM/DD' onChange={this.props.onChange} />
 
-                            
+                                    <input type="text" name="dateSold" ref="dateSold" defaultValue={this.state.dateSold} placeholder='DD/MM/YYYY' onChange={this.handleInputChange} />
+
+                                    </Form.Field>
+                                
+                                <Form.Field>
+                                    <label>Customer Name</label>
+                                    <select name="customerId" ref="customerId" defaultValue={this.state.customerId} onChange={this.handleInputChange}>
+                                        {this.state.CustomerData.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+
+                                                  
+                                    </select>
+                                    
                                 </Form.Field>
 
 
-                           <Form.Field>
-                                    <label>Customer Name</label>
-                                    <select name="CustomerId" ref="customerId" onChange={this.props.onChange} value={this.props.customerId}>
+
+                                
+                                   
+
+                                <Form.Field>
+
+                                    <label>Product Name</label>
+
+                                    <select name="ProductId" ref="productId" defaultValue={this.state.productId} onChange={this.handleInputChange}>
 
 
-                                    {this.state.CustomerData.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
-
-
-
-
-                                </select>
-
-
-                            </Form.Field>
-
-
-                            <Form.Field>
-
-                                <label>Product Name</label>
-
-                                    <select name="ProductId" ref="productId" onChange={this.props.onChange} value={this.props.productId}>
-
-
-                                    {this.state.ProductData.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
-                                </select>
+                                        {this.state.ProductData.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
+                                    </select>
 
 
 
 
-                            </Form.Field>
-                            <Form.Field>
+                                </Form.Field>
+                                <Form.Field>
 
-                                <label>Store Name</label>
+                                    <label>Store Name</label>
 
-                                    <select name="StoreId" ref="storeId" onChange={this.props.onChange} value={this.props.storeId} >
+                                    <select name="storeId" ref="storeId" defaultValue={this.state.storeId} onChange={this.handleInputChange} >
 
-                                    {this.state.StoreData.map((store) => <option key={store.id} value={store.id}>{store.name}</option>)}
-                                </select>
+                                        {this.state.StoreData.map((store) => <option key={store.id} value={store.id}>{store.name}</option>)}
+                                    </select>
 
 
-                            </Form.Field>
-                            
-                        </Form>
+                                </Form.Field>
+
+                            </Form>
 
 
 
@@ -247,7 +261,7 @@ export class EditSale extends Component {
                                 positive
                                 labelPosition='right'
                                 icon='checkmark'
-                                content='Create' />
+                                content='Edit' />
                         </Modal.Actions>
                     </Modal>
 

@@ -57,7 +57,7 @@ export class AddStore extends Component {
                             positive
                             labelPosition='right'
                             icon='checkmark'
-                            content='Save' />
+                            content='Create' />
                     </Modal.Actions>
                 </Modal>
             </div>

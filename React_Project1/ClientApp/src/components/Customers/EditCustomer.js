@@ -144,7 +144,7 @@ export class EditCustomer extends Component {
                             positive
                             labelPosition='right'
                             icon='checkmark'
-                            content='Save' />
+                            content='Edit' />
                     </Modal.Actions>
                 </Modal>
             </div>

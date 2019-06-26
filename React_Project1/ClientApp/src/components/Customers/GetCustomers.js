@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Pagination } from 'semantic-ui-react';
 import axios from 'axios';
 import { CreateCustomer } from './CreateCustomer';
 import { DeleteCustomer } from './DeleteCustomer';
@@ -33,7 +33,7 @@ export class GetCustomers extends Component {
             });
         });
     }
-
+   
 
     render() {
 
@@ -81,9 +81,19 @@ export class GetCustomers extends Component {
                         })}
                     </Table.Body>
 
-
+                   
                 </Table>
-            </div>
+
+
+                <footer>Copyright &copy;2019  -Nayna Priyadarshi </footer>
+
+
+                </div>
+
+
+
+           
+            
         );
     }
 }

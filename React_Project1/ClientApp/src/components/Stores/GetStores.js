@@ -81,6 +81,9 @@ export class GetStores extends Component {
 
 
                 </Table>
+
+                <footer>Copyright &copy; 2019 -Nayna Priyadarshi </footer>
+
             </div>
         );
     }

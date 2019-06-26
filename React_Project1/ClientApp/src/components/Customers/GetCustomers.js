@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { Table, Pagination } from 'semantic-ui-react';
+import { Table, Pagination} from 'semantic-ui-react';
 import axios from 'axios';
 import { CreateCustomer } from './CreateCustomer';
 import { DeleteCustomer } from './DeleteCustomer';
@@ -12,7 +12,10 @@ export class GetCustomers extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            CustomerData: []
+            CustomerData: [],
+            defaultActivePage: 1,
+            totalPages: 10
+
         }
     }
 
@@ -33,15 +36,28 @@ export class GetCustomers extends Component {
             });
         });
     }
+
+    /*handlepageChanger(pageNumber) {
+
+        console.log(`active page is  ${pageNumber} `);
+        this.setState({ activePage: pageNumber });
+
+
+
+    }*/
    
 
     render() {
 
         //const { open, deleteOn } = this.state
         return (
+
+
             <div style={{ width: '80%', marginLeft: '200px' }}>
            
                 <CreateCustomer />
+
+
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
@@ -82,7 +98,20 @@ export class GetCustomers extends Component {
                     </Table.Body>
 
                    
+
+
+                   
                 </Table>
+
+               
+
+                <div style={{ marginLeft: '650px' }}>
+
+                    <Pagination defaultActivePage={5} totalPages={10} onPageChange={this.handlepageChanger} />
+
+                    </div>
+                    
+               
 
 
                 <footer>Copyright &copy;2019  -Nayna Priyadarshi </footer>

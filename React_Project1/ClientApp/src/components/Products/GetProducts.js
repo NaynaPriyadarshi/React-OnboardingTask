@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Table} from 'semantic-ui-react';
+import { Table, Pagination } from 'semantic-ui-react';
 import axios from 'axios';
 import { CreateProduct } from './CreateProduct';
 import { DeleteProduct } from './DeleteProduct';
@@ -11,7 +11,9 @@ export class GetProducts extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ProductData: []
+            ProductData: [],
+            defaultActivePage: 1,
+            totalPages: 10
         }
     }
 
@@ -77,7 +79,16 @@ export class GetProducts extends Component {
 
                 </Table>
 
-                <footer>Copyright &copy; 2019 -Nayna Priyadarshi </footer>
+                <div style={{ marginLeft: '650px' }}>
+
+                    <Pagination defaultActivePage={5} totalPages={10} onPageChange={this.handlepageChanger} />
+
+                </div>
+
+
+
+
+                <footer>Copyright &copy;2019  -Nayna Priyadarshi </footer>
             </div>
         );
     }

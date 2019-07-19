@@ -13,7 +13,9 @@ export class CreateCustomer extends Component {
     addCustomer(newCustomer) {
         axios.request({
             method: 'post',
-            url: 'https://localhost:44394/api/Customers',
+            //url: 'https:///localhost:44394/api/Customers',
+
+            url: 'https://reactonboard.azurewebsites.net/api/Customers',
             data: newCustomer
         }).then(response => {
             console.log("createCust", response.data);

@@ -46,7 +46,8 @@ export class CreateSale extends Component {
         console.log(newSale);
         axios.request({
             method: 'post',
-            url: 'https://localhost:44394/api/Sales',
+          //  url: 'https:///localhost:44394/api/Sales',
+            url: 'https://reactonboard.azurewebsites.net/api/Sales',
             data: newSale
         }).then(response => {
 
@@ -78,7 +79,7 @@ export class CreateSale extends Component {
 
 
 
-        axios.get("https://localhost:44394/api/Sales").then(response => {
+        axios.get("https://reactonboard.azurewebsites.net/api/Sales").then(response => {
 
             this.setState({
                 SaleData: response.data
@@ -87,7 +88,7 @@ export class CreateSale extends Component {
 
 
 
-        axios.get("https://localhost:44394/api/Customers").then(response => {
+        axios.get("https://reactonboard.azurewebsites.net/api/Customers").then(response => {
 
             this.setState({
                 CustomerData: response.data
@@ -96,7 +97,7 @@ export class CreateSale extends Component {
 
 
 
-        axios.get("https://localhost:44394/api/Products").then(response => {
+        axios.get("https://reactonboard.azurewebsites.net/api/Products").then(response => {
             
             this.setState({
                 ProductData: response.data
@@ -104,7 +105,7 @@ export class CreateSale extends Component {
         });
 
 
-        axios.get("https://localhost:44394/api/Stores").then(response => {
+        axios.get("https://reactonboard.azurewebsites.net/api/Stores").then(response => {
             console.log(response.data);
             this.setState({
                 StoreData: response.data

@@ -35,7 +35,9 @@ export class EditProduct extends Component {
 
 
     editProduct() {
-        axios.get(`https://localhost:44394/api/Products/` + this.props.editid,).then(response => {
+      //  axios.get(`https:///localhost:44394/api/Products/` + this.props.editid,).then(response => {
+
+        axios.get(`https://reactonboard.azurewebsites.net/api/Products/` + this.props.editid).then(response => {
 
             this.setState({
                 id: response.data.id,
@@ -65,7 +67,9 @@ export class EditProduct extends Component {
         console.log(product);
         axios.request({
             method: 'put',
-            url: `https://localhost:44394/api/Products/` + id,
+           // url: `https:///localhost:44394/api/Products/` + id,
+
+            url: `https://reactonboard.azurewebsites.net/api/Products/` + id,
             data: product
 
         }).then(response => {

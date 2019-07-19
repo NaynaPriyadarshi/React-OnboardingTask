@@ -29,7 +29,9 @@ export class GetCustomers extends Component {
 
     componentDidMount() {
         
-        axios.get("https://localhost:44394/api/Customers").then(response => {
+       // axios.get("https:///localhost:44394/api/Customers").then(response => {
+
+        axios.get("https://reactonboard.azurewebsites.net/api/Customers").then(response => {
            
             this.setState({
                 CustomerData: response.data

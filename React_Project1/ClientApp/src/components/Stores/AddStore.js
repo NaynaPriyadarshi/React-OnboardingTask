@@ -10,7 +10,7 @@ export class AddStore extends Component {
     addStore(newStore) {
         axios.request({
             method: 'post',
-            url: 'https://localhost:44394/api/Stores',
+            url: 'https://reactonboard.azurewebsites.net/api/Stores',
             data: newStore
         }).then(response => {
             console.log("addstore", response.data);

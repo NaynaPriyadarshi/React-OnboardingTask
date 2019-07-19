@@ -11,7 +11,8 @@ export class CreateProduct extends Component {
         console.log(newProduct);
         axios.request({
             method: 'post',
-            url: 'https://localhost:44394/api/Products',
+           // url: 'https:///localhost:44394/api/Products',
+            url: 'https://reactonboard.azurewebsites.net/api/Products',
             data: newProduct 
         }).then(response => {
             

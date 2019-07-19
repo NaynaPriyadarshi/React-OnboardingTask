@@ -22,7 +22,8 @@ export class DeleteProduct extends Component {
 
     componentDidMount() {
         
-        axios.get("https://localhost:44394/api/Products").then(response => {
+      //  axios.get("https:///localhost:44394/api/Products").then(response => {
+        axios.get("https://reactonboard.azurewebsites.net/api/Products").then(response => {
            // console.log(response.data);
             this.setState({
                 ProductData: response.data
@@ -32,7 +33,10 @@ export class DeleteProduct extends Component {
 
     onDelete() {
         
-        fetch(`https://localhost:44394/api/Products/` + this.props.delid, {
+       
+
+           // fetch(`https:///localhost:44394/api/Products/` + this.props.delid, {
+                fetch( `https://reactonboard.azurewebsites.net/api/Products/` + this.props.delid, {
 
             method: 'delete'
         })

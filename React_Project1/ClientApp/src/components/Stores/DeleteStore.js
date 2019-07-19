@@ -24,7 +24,7 @@ export class DeleteStore extends Component {
 
     componentDidMount() {
 
-        axios.get("https://localhost:44394/api/Stores").then(response => {
+        axios.get("http://reactonboard.azurewebsites.net/api/Stores").then(response => {
 
             this.setState({
                 StoreData : response.data
@@ -34,7 +34,9 @@ export class DeleteStore extends Component {
 
     onDelete() {
 
-        fetch(`https://localhost:44394/api/Stores/` + this.props.delid, {
+       // fetch(`https:///localhost:44394/api/Stores/` + this.props.delid, {
+
+        fetch(`https://reactonboard.azurewebsites.net/api/Stores/` + this.props.delid, {
 
             method: 'delete'
         })

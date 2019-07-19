@@ -20,7 +20,9 @@ export class DeleteCustomer extends Component {
     close = () => this.setState({ open: false })
     componentDidMount() {
 
-        axios.get("https://localhost:44394/api/Customers").then(response => {
+       // axios.get("https:///localhost:44394/api/Customers").then(response => {
+
+        axios.get("https://reactonboard.azurewebsites.net/api/Customers").then(response => {
             
             this.setState({
                 CustomerData: response.data
@@ -30,7 +32,9 @@ export class DeleteCustomer extends Component {
 
     onDelete() {
 
-        fetch(`https://localhost:44394/api/Customers/` + this.props.delid, {
+        //fetch(`https:///localhost:44394/api/Customers/` + this.props.delid, {
+
+        fetch(`https://reactonboard.azurewebsites.net/api/Customers/` + this.props.delid, {
 
             method: 'delete'
         })

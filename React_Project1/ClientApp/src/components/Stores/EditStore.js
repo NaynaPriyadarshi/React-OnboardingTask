@@ -35,7 +35,7 @@ export class EditStore extends Component {
 
 
     editStore() {
-        axios.get(`https://localhost:44394/api/Stores/` + this.props.editid).then(response => {
+        axios.get(`https://reactonboard.azurewebsites.net/api/Stores/` + this.props.editid).then(response => {
 
             this.setState({
                 id: response.data.id,
@@ -65,7 +65,9 @@ export class EditStore extends Component {
         console.log(store);
         axios.request({
             method: 'put',
-            url: `https://localhost:44394/api/Stores/` + id,
+            //url: `https:///localhost:44394/api/Stores/` + id,
+
+            url: `https://reactonboard.azurewebsites.net/api/Stores/` + id,
             data: store
 
         }).then(response => {

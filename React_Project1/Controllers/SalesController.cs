@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace React_Project1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+   [EnableCors("ReactonboardingPolicy")]
     public class SalesController : ControllerBase
     {
         private readonly ReactOnboardingContext _context;

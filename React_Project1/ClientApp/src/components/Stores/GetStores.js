@@ -28,7 +28,7 @@ export class GetStores extends Component {
 
     componentDidMount() {
         console.log("inside did mount");
-        axios.get("https://localhost:44394/api/Stores").then(response => {
+        axios.get("https://reactonboard.azurewebsites.net/api/Stores").then(response => {
             console.log(response.data);
             this.setState({
                StoreData: response.data

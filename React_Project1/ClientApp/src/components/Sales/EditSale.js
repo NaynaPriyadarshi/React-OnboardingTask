@@ -47,7 +47,8 @@ export class EditSale extends Component {
             
   getSale() {
 
-      axios.get("https://localhost:44394/api/Sales").then(response => {
+    //  axios.get("https:///localhost:44394/api/Sales").then(response => {
+      axios.get("https://reactonboard.azurewebsites.net/api/Sales").then(response => {
 
           this.setState({
               SaleData: response.data
@@ -55,7 +56,8 @@ export class EditSale extends Component {
       });
 
 
-        axios.get("https://localhost:44394/api/Customers").then(response => {
+      //axios.get("https:///localhost:44394/api/Customers").then(response => {
+      axios.get("https://reactonboard.azurewebsites.net/api/Customers").then(response => {
 
             this.setState({
 
@@ -66,7 +68,9 @@ export class EditSale extends Component {
 
 
 
-        axios.get("https://localhost:44394/api/Products").then(response => {
+    //  axios.get("https:///localhost:44394/api/Products").then(response => {
+
+      axios.get("https://reactonboard.azurewebsites.net/api/Products").then(response => {
 
             this.setState({
                 ProductData: response.data
@@ -75,7 +79,9 @@ export class EditSale extends Component {
         });
 
 
-        axios.get("https://localhost:44394/api/Stores").then(response => {
+      //axios.get("https:///localhost:44394/api/Stores").then(response => {
+
+      axios.get("https://reactonboard.azurewebsites.net/api/Stores").then(response => {
 
             this.setState({
                 StoreData: response.data
@@ -87,7 +93,8 @@ export class EditSale extends Component {
    
 
    getSales() {
-        axios.get(`https://localhost:44394/api/Sales/` + this.props.editid).then(response => {
+      // axios.get(`https:///localhost:44394/api/Sales/` + this.props.editid).then(response => {
+       axios.get(`https://reactonboard.azurewebsites.net/api/Sales/` + this.props.editid).then(response => {
 
             this.setState({
                 id: response.data.id,
@@ -127,7 +134,8 @@ export class EditSale extends Component {
         console.log(sale);
         axios.request({
             method: 'put',
-            url: `https://localhost:44394/api/Sales/ ` + id,
+           // url: `https:///localhost:44394/api/Sales/ ` + id,
+            url: `http://reactonboard.azurewebsites.net/api/Sales/ ` + id,
             data: sale
 
         }).then(response => {

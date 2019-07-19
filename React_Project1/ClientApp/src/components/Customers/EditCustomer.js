@@ -35,7 +35,10 @@ export class EditCustomer extends Component {
 
 
     editCustomer() {
-        axios.get(`https://localhost:44394/api/Customers/` + this.props.editid).then(response => {
+       // axios.get(`https:///localhost:44394/api/Customers/` + this.props.editid).then(response => {
+
+        axios.get(` https://reactonboard.azurewebsites.net/api/Customers/` + this.props.editid).then(response => {
+
 
             this.setState({
                 id: response.data.id,
@@ -65,7 +68,8 @@ export class EditCustomer extends Component {
         console.log(customer);
         axios.request({
             method: 'put',
-            url: `https://localhost:44394/api/Customers/` + id,
+           // url: `https:///localhost:44394/api/Customers/` + id,
+            url: `https://reactonboard.azurewebsites.net/api/Customers/` + id,
             data: customer
 
         }).then(response => {
